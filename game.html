@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rock_Paper_Scissors</title>
+</head>
+
+<body>
+
+  <script>
+    let playAgain = true;
+
+    while (playAgain) {
+      let user = prompt("Enter 'r' for rock, 'p' for paper, or 's' for scissors");
+
+      // Check if user input is valid
+      if (user !== "r" && user !== "p" && user !== "s") {
+        alert("Invalid input. Please enter 'r', 'p', or 's'.");
+        continue; // Skip the rest of the loop and ask for input again
+      }
+
+      let cpuI = Math.floor(Math.random() * 3);
+      let cpu = ["r", "p", "s"][cpuI];
+
+      const match = () => {
+        if (cpu === user) {
+          return "Nobody wins.";
+        } else if (cpu === "r" && user === "p") {
+          return "User";
+        } else if (cpu === "r" && user === "s") {
+          return "Computer";
+        } else if (cpu === "p" && user === "s") {
+          return "User";
+        } else if (cpu === "p" && user === "r") {
+          return "Computer";
+        } else if (cpu === "s" && user === "r") {
+          return "User";
+        } else if (cpu === "s" && user === "p") {
+          return "Computer";
+        }
+      }
+
+      let result = match();
+      alert(`User: ${user}, Computer: ${cpu} and the result is: ${result === "Nobody wins." ? result : "Winner is " + result}`);
+
+      // Ask the user if they want to play again
+      playAgain = confirm("Do you want to play again?");
+    }
+  </script>
+
+</body>
+
+</html>
